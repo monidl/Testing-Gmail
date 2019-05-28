@@ -15,19 +15,37 @@ public class SeleniumGmail {
 				"D:/Selenium/Chrome Driver/chromedriver.exe");
 				WebDriver driver = new ChromeDriver();
 				driver.get("https://www.gmail.com");
-				WebElement element = driver.findElement(By.name("q"));
+				WebElement element = driver.findElement(By.name("identifier"));
+
 				try{
 				Thread.sleep(2000);
 				} catch(InterruptedException e){
 					System.out.printf("got interrupted!");
 				}
-				element.sendKeys("");
-				element.submit();
+				
+				//email
+				element.sendKeys("rockstars.enroute@gmail.com");
+				element = driver.findElement(By.id("identifierNext"));
+				element.click();
+
 				try{
 					Thread.sleep(2000);
 					} catch(InterruptedException e){
 						System.out.printf("got interrupted!");
 					}
+				
+				//password
+				element = driver.findElement(By.name("password"));
+				element.sendKeys("Rockstars2019");
+				element = driver.findElement(By.id("passwordNext"));
+				element.click();
+				
+				try{
+					Thread.sleep(1000);
+					} catch(InterruptedException e){
+						System.out.printf("got interrupted!");
+					}
+				
 				driver.quit();
 	}
 
